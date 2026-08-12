@@ -9,89 +9,96 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-    <div class = "conteudo">
+    <div class="container">
+        
+        <div class="titulo">
+            <h1>Encontre seu <span>CEP</span></h1>
+            <p>Descubra informações de endereços em qualquer lugar!</p>
+        </div>
 
-    <div name = "Buscar endereço">
+        <div class="conteudo">
 
-        <form>
-        Insira seu CEP: <input type = "text" id = "cep">
-        <br>
-        <br>
-        <input type = "button" value = "Enviar" onclick="pegarCep()">
-    </form>
+            <!--forms que recebe um cep e mostra as informações do endereço-->>
+            <div name="Buscar endereço">
+                <form onsubmit="return false;">
+                    <div class="pesquisa">
+                        <div class="campo">
+                            Insira seu CEP: <input type="text" id="cep" placeholder=" 00000-000">
+                        </div>
+                        <input type="button" class="botao" value="🔎︎  Buscar CEP" onclick="pegarCep()">
+                    </div>
+                </form>
+
+                <!-- divs onde o script vai inserir os resultados -->
+                <div id="result"></div>
+                <div id="erro"></div>
+                <div id="historico"></div>
+            </div>
+
+            <!-- forms que vai receber as informações do endereço para dar o cep  -->
+            <div name="Buscar cep" class="endereco">
+                <form onsubmit="return false;">
+                    
+                    <div class="campo estado">
+                        <span class="icone">🗺</span>
+                        <select id="estado">
+                            <option value="AC">AC</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="PA">PA</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="TO">TO</option>
+                            <option value="AL">AL</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="MA">MA</option>
+                            <option value="PB">PB</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RN">RN</option>
+                            <option value="SE">SE</option>
+                            <option value="DF">DF</option>
+                            <option value="GO">GO</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="ES">ES</option>
+                            <option value="MG">MG</option>
+                            <option value="RJ">RJ</option>
+                            <option value="SP">SP</option>
+                            <option value="PR">PR</option>
+                            <option value="RS">RS</option>
+                            <option value="SC">SC</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo-endereco">
+                        <div class="campo cidade">
+                            <span class="icone">🏙ㅤ</span>
+                            Insira sua cidade: <input type="text" id="cidade" placeholder=" Ex: Rio Branco">
+                        </div>
+                        <div class="campo logradouro">
+                            <span class="icone">🏠︎ㅤ</span>
+                            Insira seu logradouro: <input type="text" id="logradouro" placeholder=" Ex: Rua das Flores">
+                        </div>
+                    </div>
+
+                    <!--chama a função limpar-->
+                    <div class="botoes">
+                        <button style="margin-top: 15px;" type="button" class="btn-escuro" onclick="limpar()">⛌ Limpar</button>
+
+                        <!--chama a função buscarCep-->
+                        <div style="text-align: right; margin-top: 15px;">
+                            <input type="button" class="botao" value="🔎︎ Buscar CEP" onclick="buscarCep()">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
 
     <script src="../script/cep.js"></script>
-
-    <div id="result"></div>
-
-    <div id = "erro"></div>
-    
-    <div id = "historico"></div>
-
-    <button onclick = "limpar()">Limpar</button>
-
-    </div>
-
-    <br>
-    <br>
-
-    <div name = "Buscar cep">
-
-    <form>
-
-        <select id = "estado">
-
-        <option value="AC">AC</option>
-        <option value="AP">AP</option>
-        <option value="AM">AM</option>
-        <option value="PA">PA</option>
-        <option value="RO">RO</option>
-        <option value="RR">RR</option>
-        <option value="TO">TO</option>
-        <option value="AL">AL</option>
-        <option value="BA">BA</option>
-        <option value="CE">CE</option>
-        <option value="MA">MA</option>
-        <option value="PB">PB</option>
-        <option value="PE">PE</option>
-        <option value="PI">PI</option>
-        <option value="RN">RN</option>
-        <option value="SE">SE</option>
-        <option value="DF">DF</option>
-        <option value="GO">GO</option>
-        <option value="MT">MT</option>
-        <option value="MS">MS</option>
-        <option value="ES">ES</option>
-        <option value="MG">MG</option>
-        <option value="RJ">RJ</option>
-        <option value="SP">SP</option>
-        <option value="PR">PR</option>
-        <option value="RS">RS</option>
-        <option value="SC">SC</option>
-
-        </select>
-        <br>
-        <br>
-
-        Insira sua cidade: <input type = "text" id = "cidade">
-        <br>
-
-        Insira seu logradouro: <input type = "text" id = "logradouro">
-        <br>
-        <br>
-
-        <input type = "button" value = "Buscar CEP" onclick="buscarCep()">
-
-    </form>
-
-    <div id="result"></div>
-
-    <div id = "erro"></div>
-
-    </div>
-
-    </div>
-
-    
 </body>
 </html>

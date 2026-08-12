@@ -1,7 +1,10 @@
-// URL da API
+// Tenta buscar no armazenamento do navegador (localStorage) os CEPs já pesquisados. 
+// Se não tiver nada, cria um array vazio.
 
 const ceps = JSON.parse(localStorage.getItem("ceps")) || []
 
+// Pega o número digitado e consulta a API ViaCEP. 
+// Se der certo, salva no histórico e exibe os detalhes (rua, bairro, etc) na tela.
 async function pegarCep()
 {
 
@@ -31,6 +34,7 @@ async function pegarCep()
 
         posts[vetor]
 
+        // Adiciona o CEP atual na nossa lista e atualiza o localStorage
         ceps.push(cep)
 
         console.log(ceps)
@@ -44,6 +48,7 @@ async function pegarCep()
 
         console.log(localStorage.getItem("ceps"));
 
+        // Cria os parágrafos com as informações e joga na div de resultado
         vetor.forEach((campo) => { 
 
             console.log(posts[campo])
@@ -58,7 +63,7 @@ async function pegarCep()
          })
 
       
-
+    // Se a API der erro, exibe uma mensagem vermelha na tela
     } catch (error) {
         const container = document.getElementById("erro")
         console.error('Erro ao buscar cep:', error);
@@ -67,6 +72,8 @@ async function pegarCep()
 
 }
 
+// Limpa a lista atual, pega os últimos 3 CEPs pesquisados e cria parágrafos clicáveis.
+// Ao clicar num CEP do histórico, ele já refaz a busca automaticamente.
 function mostrarHistorico()
 {
     const lista = document.getElementById("historico")
@@ -92,8 +99,10 @@ function mostrarHistorico()
     })
 }
 
+// Chama a função assim que a página carrega
 mostrarHistorico()
 
+// Apaga o campo de texto, os resultados na tela, o histórico salvo e zera o array.
 function limpar()
 {
     document.getElementById("cep").value = ""
@@ -103,7 +112,7 @@ function limpar()
     document.getElementById("historico").innerHTML = ""
 }
 
-
+// Pega os dados de Estado, Cidade e Rua e busca na API qual é o CEP correspondente.
 async function buscarCep()
 {
     let uf = document.getElementById("estado").value;
@@ -126,6 +135,7 @@ async function buscarCep()
 
         console.log(posts);
 
+        // Se a API retornar vazio, avisa que o endereço não existe
         if (posts.length == 0)
         {
             const container = document.getElementById("erro")
@@ -133,6 +143,7 @@ async function buscarCep()
             container.innerHTML = '<p style="color: red;">Endereço não existente.</p>';
         }
 
+        // Se achou, lista os CEPs retornados na div de resultado
         posts.forEach((endereco) => { 
 
             console.log(endereco.cep)
@@ -151,6 +162,7 @@ async function buscarCep()
 
         catch (error) 
         {
+            // Se der erro na rede ou na API, exibe a mensagem de erro
             const container = document.getElementById("erro")
             console.error('Erro ao buscar cep:', error);
             container.innerHTML = '<p style="color: red;">Endereço não encontrado.</p>';
