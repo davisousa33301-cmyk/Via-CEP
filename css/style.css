@@ -7,14 +7,17 @@
 }
 
 body {
-    background-color: rgba(0, 0, 0, 0.349); 
     min-height: 100vh;
-    background-image: url("../img/mapa.png");
+    background:
+    linear-gradient(
+        rgba(2,10,25,.35),
+        rgba(0,20,40,.75)
+    ),
+    url("../img/mapa.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.567); 
 }
 
 
