@@ -7,6 +7,7 @@
 }
 
 body {
+    background-color: rgba(0, 0, 0, 0.349); 
     min-height: 100vh;
     background-image: url("../img/mapa.png");
     background-size: cover;
