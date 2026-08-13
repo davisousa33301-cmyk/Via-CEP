@@ -33,6 +33,7 @@ body {
 
 .titulo h1 {
     font-size: 3.5rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
 .titulo h1 span {
